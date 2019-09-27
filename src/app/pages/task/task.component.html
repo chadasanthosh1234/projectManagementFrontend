@@ -1,0 +1,62 @@
+<div class="container col-sm-10">
+  <form class="form-horizontal" (ngSubmit)="createTask()">
+    <div class="row form-group">
+      <label class="control-label col-sm-2" for="project" style="text-align:left">Project</label>
+      <div class="col-sm-6">
+        <select name="project" [(ngModel)]="newTask.project" required>
+              <option *ngFor="let project of projects" [ngValue]="project">{{project.project}}</option>
+          </select>
+      </div>
+    </div>
+
+    <div class="row form-group">
+      <label class="control-label col-sm-2" style="text-align:left" for="task">Task</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="task" name="task" [(ngModel)]="newTask.task">
+      </div>
+    </div>
+    <div class="row form-group">
+      <div class="col-sm-offset-2">
+        <input type="checkbox" id="isParentTask" name="isParentTask" [(ngModel)]="newTask.isParentTask">
+        <label for="taskName">Parent Task</label>
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2" style="text-align:left" for="priority">Priority</label>
+      <div class="col-sm-8">
+        <input type="range" class="form-control-range" id="priority" name="priority" [(ngModel)]="newTask.priority" min="0" max="30">
+      </div>
+    </div>
+    <div class="row form-group">
+      <label class="control-label col-sm-2" for="parentTask" style="text-align:left">Parent Task</label>
+      <div class="col-sm-6">
+        <select name="parentTask" [(ngModel)]="newTask.parentTask">
+              <option *ngFor="let parentTask of parentTasks" [ngValue]="parentTask">{{parentTask.task}}</option>
+          </select>
+      </div>
+    </div>
+
+    <div class="row form-group">
+      <label class="control-label col-sm-2" style="text-align:left" for="startDate">Start Date</label>
+      <div class="col-sm-3">
+        <input type="date" class="form-control" id="startDate" name="startDate" [(ngModel)]="newTask.startDate">
+      </div>
+      <label class="control-label col-sm-2" style="text-align:left" for="endDate">End Date</label>
+      <div class="col-sm-3">
+        <input type="date" class="form-control" id="endDate" name="endDate" [(ngModel)]="newTask.endDate">
+      </div>
+    </div>
+
+    <div class="row form-group">
+      <label class="control-label col-sm-2" for="user" style="text-align:left">User</label>
+      <div class="col-sm-6">
+        <select name="user" [(ngModel)]="newTask.user" required>
+              <option *ngFor="let user of users" [ngValue]="user">{{user.firstName}} {{user.lastName}}</option>
+          </select>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success col-sm-1 col-sm-offset-7">Add Task</button>
+    <button type="reset" class="btn btn-outline-dark col-sm-1 col-sm-offset-1">Reset</button>
+  </form>
+</div>
